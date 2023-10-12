@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MART</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .navbar{
+            border-bottom: 1px solid rgb(58, 56, 56);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .navbar > a{
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar > h2 > a{
+            color: black;
+            text-decoration: none;
+            
+        }
+        main{
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+            gap: 50px;
+            position: absolute;
+        }
+        .card{
+            height: 300px;
+            width: 250px;
+            box-shadow: 2px 2px 13px rgb(221, 218, 218);
+            border-radius: 10px;
+        }
+        .product-image{
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            height: 200px;
+            width: 250px;
+        }
+        .product-name a{
+            text-decoration: none;
+            color: black;
+        }
+        .productname{
+            margin-left: 15px;
+        }
+        .product-price{
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .submit{
+            padding: 5px;
+            width: 100px;
+            background-color: rgb(239, 98, 47);
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+        .submit > a{
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+        }
+        .modal-container{
+            position: relative;
+            background-color: rgb(238, 235, 235);
+            border-radius: 10px;
+            width: 30%;
+            margin: 60px auto;
+            display: none;
+            padding: 10px;
+        }
+        .exit{
+            float: right;
+            color: red;
+            text-decoration: none;
+        }
+        .products{
+            margin-top: 20px;
+        }
+        .product{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 1px solid rgb(219, 216, 216);
+            padding: 15px;
+            height: 50px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .del{
+            background-color: rgb(245, 80, 80);
+            padding: 5px;
+            /* width: 10%; */
+            border-radius: 5px;
+        }
+        .product > a{
+            text-decoration: none;
+            color: white;
+        }
+        .edit{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 10%;
+            background-color: rgb(245, 80, 80);
+        }
+        .checkout > button{
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(116, 219, 116);
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2><a href="/product/allProducts">MART</a></h2>
+            <a href="#modal-container" onclick="showModal()">My Cart</a>
+            <p>Hello <%=username%></p>
+            
+        </div>
+
+        <main>
+            <% products.forEach(product => {  %>
+                <div class="card">
+                    <div class="product-image">
+                        <a href=""><img  src="../images/biro.jpg" alt="Pen"></a>
+                    </div>
+                    <div class="product-name">
+                        <a href="/product/<%=product.id%>">
+                            <h2 class="productname"><%= product.productName %></h2>
+                        </a>
+                    </div>
+                    
+                    <p class="product-price"><%= product.productPrice%></p>
+
+                    <div class="submit">
+                        <a href="/cart/<%=product.id%>">Add To Cart</a>
+                    </div>
+                    
+                </div>
+            <% }) %>      
+        </main>
+
+        <div class="modal-container" id="modal-container">
+            <div class="cart-header">
+                <a href="" onclick="hideModal()" class="exit">X</a>
+            </div>
+            <div class="products">
+                <% cartProducts.forEach(cartProduct => {  %>
+                        <div class="product">
+                            <div class="details">
+                                <p>Name: <%= cartProduct.product.productName %></p>
+                                <p>Price: <%= cartProduct.productPrice %></p>
+                                <p>Quantity: <%= cartProduct.quantity %></p>
+                            </div>
+                            <!-- <div class="edit">
+                                <a href="/cart/increment/<%=cartProduct._id%>" >+</a>
+                                <p>1</p>
+                                <a href="/cart/decrement/<%=cartProduct._id%>">-</a>
+                             </div> -->
+                            <a href="/cart/delete/<%=cartProduct.product._id %>">
+                                <div class="del">
+                                    Delete 
+                                </div>
+                            </a>
+                        </div>
+                <% }) %>
+                
+            </div>
+
+            <div class="checkout">
+                <button type="submit">Check Out</button>
+            </div>
+           
+        </div>
+
+    </div>
+    <script>
+        function hideModal(){
+           var modalContainer = document.getElementsByClassName("modal-container")[0];
+           modalContainer.style.display = "none";
+        }
+        function showModal(){
+           var modalContainer = document.getElementsByClassName("modal-container")[0];
+           modalContainer.style.display = "block";
+        }
+    </script>
+</body>
+</html>

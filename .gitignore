@@ -1,0 +1,7 @@
+node_modules
+admin
+config
+addprod.ejs
+admin.ejs
+editProduct.ejs
+NOTE.md

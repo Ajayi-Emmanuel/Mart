@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MART || SIGNUP</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        :root{
+            --full-width: 100%;
+            --half-width: 50%;
+            --margin-auto: 0 auto;
+            --color: rgb(49, 48, 48);
+            --medium-padding: 10px;
+            --small-padding: 7px;
+            --border-radius: 5px;
+            --font-size: 1.3em;
+            --white: white;
+        }
+        
+        .container{
+            max-width: var(--full-width);
+            width: 1200px;
+            margin: 40px auto;
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: var(--color);
+        }
+        form{
+            padding: 15px;
+            width: 400px;
+            margin: var(--margin-auto);
+        }
+        .form-label{
+            width: var(--full-width);
+            margin: 20px auto;
+        }
+
+        input{
+            padding: var(--medium-padding);
+            border-radius: var(--border-radius);
+            width: 95.5%;
+            font-size: 15px;
+        }
+        input:focus{
+            outline: none;
+        }
+        input::placeholder{
+            color: lightgrey;
+            font-family: cursive;
+            text-align: center;
+            font-size: var(--font-size);
+        }
+        button{
+            width: var(--half-width);
+            border-radius: var(--border-radius);
+            padding: var(--small-padding);
+            background-color: var(--color);
+            color: var(--white);
+            font-family: cursive;
+            font-size: var(--font-size);
+            border: none;
+            transition: .5s;
+            margin-left: 25%;
+            
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(14, 14, 25);
+            transition: 1s; 
+        }
+        p{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: red;
+            cursor: pointer;
+        }
+
+        .error{
+            width: 25%;
+            margin: var(--margin-auto);
+            background-color: rgb(243, 193, 193);
+            border-radius: var(--border-radius);
+            color: white;
+            font-size: 20px;
+            padding: 15px;
+        }
+        @media (max-width: 750px) {
+            
+            form{
+                width: 70%;
+            }
+            input{
+                width: 94%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="login" action="/signup" method="post">
+            <h1>Register</h1>
+
+
+            <div class="form-label">
+                <input 
+                type="firstname" 
+                id="firstname" 
+                placeholder="Enter firstname"
+                required
+                name="firstname"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="lastname" 
+                id="lastname" 
+                placeholder="Enter lastname"
+                required
+                name="lastname"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter email"
+                required
+                name="email"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="username" 
+                id="username" 
+                placeholder="Enter username"
+                required
+                name="username"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="text" 
+                id="address" 
+                placeholder="Enter Address"
+                required
+                name="address"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="text" 
+                id="phoneNumber" 
+                placeholder="Enter Phone Number"
+                required
+                name="phoneNumber"
+                />
+            </div>
+            <div class="form-label">
+                <input 
+                type="password" 
+                id="pwd" 
+                placeholder="Enter Password"
+                name="password"
+                required
+                />
+            </div>
+            <div class="form-label">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+            
+            <p class="form-label">Already have an account? <a href="/login">Login Here</a></p>
+
+        </form>
+
+        <% if(error){ %>
+            <div class="error">
+                <p><%= error %></p>
+            </div>
+        <% } %> 
+    </div>
+</body>
+</html>
