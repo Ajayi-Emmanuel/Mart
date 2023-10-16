@@ -1,5 +1,5 @@
 const express = require("express");
-const config =  require("config");
+require("dotenv").config()
 const connect = require("./utilities/connect")
 const logger = require("./utilities/logger");
 const userRoute = require("./routes/user.route");
@@ -12,7 +12,7 @@ const userAdminRoute = require("./admin/useradmin.route");
 
 const app = express();
 app.use(express.json())
-const port = config.get("port")
+const port = process.env.port
 
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser()); 

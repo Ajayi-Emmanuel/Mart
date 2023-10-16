@@ -1,5 +1,5 @@
 const {sign, verify} = require("jsonwebtoken")
-const config = require("config")
+require("dotenv").config()
 
 
 const createToken =  (user)=> {
@@ -8,7 +8,8 @@ const createToken =  (user)=> {
             username: user.username, 
             id:user._id
         }, 
-        config.get("JWT_SECRET"))
+        process.env.JWT_SECRET
+    )
 
     return accessToken
 }
@@ -21,7 +22,7 @@ const verifyToken = (req, res, next) => {
         })
     else{
         try{
-            const validToken = verify(accessToken, config.get("JWT_SECRET"))
+            const validToken = verify(accessToken, process.env.JWT_SECRET)
             if(validToken){
                 req.user = validToken.username;
                 
@@ -32,7 +33,7 @@ const verifyToken = (req, res, next) => {
         }
     }
 
-    
+     
 }
 
 

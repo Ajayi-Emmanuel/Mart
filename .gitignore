@@ -4,3 +4,4 @@ addprod.ejs
 admin.ejs
 editProduct.ejs
 NOTE.md
+.env

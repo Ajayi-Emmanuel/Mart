@@ -1,5 +1,5 @@
 const userAdminRouter = require("express").Router()
-const config = require("config")
+require("dotenv").config()
 const {createToken} = require("../middleware/checkAuth")
 
 
@@ -13,7 +13,7 @@ userAdminRouter.get("/login", (req, res) => {
 
 userAdminRouter.post("/login", (req, res) => {
     const {username, password} = req.body
-    const adminUser = config.get("adminUser")
+    const adminUser = process.env.adminUser
 
     if(!username){
         return res.status(400).send({
