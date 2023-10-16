@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
-const config =  require("config");
+const bcrypt = require("bcrypt");
+const { toInteger } = require("lodash");
+require("dotenv").config()
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -43,7 +44,7 @@ const userSchema = new Schema({
 userSchema.pre("save", async function(next){
     let user = this;
 
-    const salt = await bcrypt.genSalt(config.get("saltFactor"))
+    const salt = await bcrypt.genSalt(toInteger(process.env.saltFactor))
     const hash = await bcrypt.hashSync(user.password, salt)
 
     user.password = hash;

@@ -121,6 +121,68 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
+        @media (max-width: 750px) {
+            main{
+                padding: 15px;
+                display: grid;
+                grid-template-columns: 0.5fr 0.5fr;
+                gap: 10px;
+                position: absolute;
+                overflow-x: auto;
+            }
+            .card{
+                height: 207px;
+                width: 160px;
+                box-shadow: 3px 3px 10px rgb(221, 218, 218);
+                border-radius: 10px;
+            }
+            .product-image{
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                height: 120px;
+                width: 160px;
+            }
+            .product-name a{
+                text-decoration: none;
+                color: black;
+                font-size: 12px;
+            }
+            .productname{
+                margin-top: 2px;
+                margin-left: 15px;
+            }
+            .product-price{
+                padding: 5px;
+                margin-left: 10px;
+                font-size: 13px;
+            }
+            .submit{
+                width: 70px;
+                
+            }
+            .submit > a{
+                font-size: 12px;
+            }
+            .modal-container{
+                width: 60%;
+            }
+            .del{
+                background-color: rgb(245, 80, 80);
+                padding: 5px;
+                border-radius: 5px;
+                font-size: 13px;
+            }
+            .checkout > button{
+                padding: 7px;
+                border-radius: 5px;
+                border: none;
+                background-color: rgb(116, 219, 116);
+                cursor: pointer;
+                font-size: 13px;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>

@@ -71,6 +71,7 @@ exports.signUp = (req, res) => {
     }).then(()=> {
         res.redirect("/login")
     }).catch((err) => {
+        console.log(err)
         res.render("signup",{
             error: "Error in registering"
         })

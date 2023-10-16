@@ -36,6 +36,15 @@ const verifyToken = (req, res, next) => {
      
 }
 
+function verifyUser(username, password){
+    const adminUsername = process.env.adminUsername
+    const adminPassword = process.env.adminPassword
+    if((username == adminUsername) && (password == adminPassword)){
+        return true
+    }else{
+        return false
+    }
+}
 
 
-module.exports = {createToken, verifyToken}
+module.exports = {createToken, verifyToken, verifyUser}

@@ -26,7 +26,6 @@ adminRouter.post("/addproduct", async (req, res) => {
             msg: "Product Saved Successfully to Database"
         })
     }catch(err){
-        console.log(err)
         res.render("addprod", {
             msg: "Error storing product in database"
         })

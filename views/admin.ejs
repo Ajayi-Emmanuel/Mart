@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products </title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        nav{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-bottom: 1px solid rgb(109, 106, 106);
+            padding: 10px;
+        }
+        nav a{
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+        h2{
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 50px;
+        }
+        form{
+            padding: 10px;
+        }
+        .form-label{
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            gap: 15px;
+        }
+        input{
+            padding: 10px;
+            font-size: 16px;
+        }
+        input::placeholder{
+            font-style: italic;
+
+        }
+        button{
+            font-size: 16px;
+            cursor: pointer;
+        }
+        table,td,th{
+            font-size: 20px;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+        }
+        tr:nth-child(odd){
+            background-color: rgb(243, 247, 245);
+        }
+        .edit{
+            background-color: rgb(17, 216, 17);
+            padding: 5px;
+            width: 50%;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .del{
+            background-color: rgb(245, 80, 80);
+            padding: 5px;
+            width: 50%;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        td a{
+            text-decoration: none;
+            color: white;
+        }
+        .edit:hover, .del:hover{
+            transition: 1s;
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <nav>
+            <p>Mart</p>
+            <a href="/admin/addproduct">Add Product</a>
+            <a href="/admin/allproduct">All Products</a>
+        </nav>
+        
+        <main>
+            <h2>Products</h2>
+            <form action="/admin/findProduct/" method="post">
+                <div class="form-label">
+                    <input type="text" name="productName" placeholder="Enter Product Name Here" required>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+            <table style="width: 100%" class="table">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Quantity</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                    <% products.forEach(product => {  %>
+                        <tr>
+                            <td><%=product.productName%></td>
+                            <td><%=product.productPrice%></td>
+                            <td><%=product.quantity%></td>
+                            <td><a href="/admin/updateProduct/<%=product._id%>">
+                                <div class="edit">
+                                    Edit
+                                </div>
+                            </a></td>
+                            <td><a href="/admin/deleteProduct/<%=product._id%>">
+                                <div class="del">
+                                    Delete
+                                </div>
+                            </a></td>
+                        </tr> 
+                    <% }) %>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

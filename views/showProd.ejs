@@ -42,7 +42,6 @@
             width: 65%;
         }
         .product-details{
-            /* overflow-y: scroll; */
             height: 400px;
             width: 35%;
             padding: 5px;
@@ -61,7 +60,7 @@
         }
         .comments{
             overflow-y: scroll;
-            height: 300px;
+            height: max-content;
             margin: 10px 0;
         }
         textarea{
@@ -163,11 +162,74 @@
             margin-top: 10px;
             font-size: 16px;
         }
+        @media (max-width: 750px) {
+            main{
+                max-width: 100%;
+            }
+            .main{
+                display: initial;
+                position: initial;
+            }
+            .image-section{
+                height: 300px;
+                width: 99%;
+                max-width: 100%;
+                max-width: 100%;
+            }
+            .product-details{
+                width: 95%;
+                max-width: 100%;
+                height: max-content;
+                padding: 5px;
+            }
+            .product-details > h1{
+                margin-left: 15px;
+            }
+            .description{
+                padding: 5px;
+                font-size: 16px;
+            }
+            .comment-section{
+                border: 1px solid rgb(226, 217, 217);
+                width: 95%;
+                max-width: 100%;
+            }
+            .comments{
+                height: max-content;
+            }
+            textarea{
+                
+                font-size: 13px;
+                width: 90%;
+                margin: 0 auto;
+            }
+            .comment{
+                font-size: 13px;
+
+            }
+            .time{
+                font-size: 8px;
+            }
+            .user{
+                font-size: 10px;
+            }
+            button{
+                padding: 5px;
+                color: black;
+                background-color: rgb(142, 213, 142);
+                font-size: 18px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                width: 100px;
+                margin-bottom: 20px;
+            }
+        }
        
     </style>
 </head>
 <body>  
-    <div class="container">
+    <div id="container">
         <div class="navbar">
             <h2><a href="/product/allProducts">MART</a></h2>
             <a href="#modal-container" onclick="showModal()">My Cart</a>

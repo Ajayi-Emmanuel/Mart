@@ -1,6 +1,6 @@
+const {verifyUser} = require("../middleware/checkAuth")
 const userAdminRouter = require("express").Router()
 require("dotenv").config()
-const {createToken} = require("../middleware/checkAuth")
 
 
 
@@ -13,7 +13,6 @@ userAdminRouter.get("/login", (req, res) => {
 
 userAdminRouter.post("/login", (req, res) => {
     const {username, password} = req.body
-    const adminUser = process.env.adminUser
 
     if(!username){
         return res.status(400).send({
@@ -30,16 +29,18 @@ userAdminRouter.post("/login", (req, res) => {
             error: "Fill field completely"
         }) 
     }
-    
-    if((username == adminUser.adminUsername) && (password == adminUser.adminPassword)){
-        
-        res.redirect("/admin/allproduct")
-    }else{
+
+    const isVerified = verifyUser(username, password)
+    if(!isVerified){
         res.render("login", {
             error: "Incorrect Password or username",
             admin: true
         })
+    }else{
+        res.redirect("/admin/allproduct")
     }
+    
 })
+
 
 module.exports = userAdminRouter

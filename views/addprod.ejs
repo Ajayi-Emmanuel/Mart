@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        nav{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-bottom: 1px solid rgb(56, 55, 55);
+            padding: 10px;
+        }
+        nav a{
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+        main{
+            text-align: center;
+            margin-top: 15px;
+        }
+        form{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .form-label{
+            padding: 10px;
+        }
+        .img{
+            height: 150px;
+            width: 150px;
+            border: 1px solid black;
+        }
+        input, textarea{
+            padding: 7px;
+            width: 98%;
+        }
+        input::placeholder{
+            font-style: italic;
+        }
+
+        button{
+            width: 30%;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .error-message{
+            background-color: rgb(238, 178, 178);
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 20px;
+            width: 50%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <p>Mart</p>
+            <a href="/admin/addproduct">Add Product</a>
+            <a href="/admin/allproduct">All Products</a>
+        </nav>
+        <main>
+            <form action="/admin/addproduct" method="post">
+                <% if(msg){ %>
+                    <div class="error-message">
+                        <p><%= msg %></p>
+                    </div>
+                <% } 
+                %> 
+                <div class="form-label img">
+                    <img src="" alt="">
+                </div>
+                <div class="form-label">
+                    <input type="text" name="productName" required placeholder="Product Name">
+                </div>
+                <div class="form-label">
+                    <input type="text" name="productPrice" required placeholder="price">
+                </div>
+                <div class="form-label">
+                    <input type="text" name="quantity" required placeholder="Quantity">
+                </div>
+                <div class="form-label">
+                    <textarea name="productDescription" id="" cols="50" rows="10" required placeholder="Product Description"></textarea>
+                </div>
+                <div class="form-label">
+                    <button type="submit">Add</button>
+                </div>
+                
+
+                
+            </form>
+        </main>
+    </div>
+</body>
+</html>

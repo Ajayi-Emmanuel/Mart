@@ -1,7 +1,3 @@
 node_modules
-config
-addprod.ejs
-admin.ejs
-editProduct.ejs
 NOTE.md
 .env
