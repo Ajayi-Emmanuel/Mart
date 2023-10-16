@@ -12,8 +12,7 @@ const productSchema = new Schema({
         required: true
     },
     productImage: {
-        type: String,
-        unique: true
+        type: String
     },
     quantity: {
         type: Number,
