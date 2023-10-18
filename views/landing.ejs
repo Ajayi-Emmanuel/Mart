@@ -8,13 +8,16 @@
         *{
             padding: 0px;
             margin: 0;
-            font-family: cursive;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .container{
+            max-width: 100%;
         }
         nav{
             display: grid;
             grid-template-columns: 3fr 0.5fr 0.5fr;
-            /* border: 1px solid black; */
             padding: 15px;
+            border-bottom: 1px solid rgb(82, 80, 80);
         }
         nav a{
             text-decoration: none;
@@ -22,7 +25,6 @@
             font-size: 20px;
         }
         main{
-            /* border: 1px solid red; */
             padding: 25px;
             text-align: center;
         }
@@ -32,6 +34,17 @@
         }
         main span{
             font-size: 25px;
+        }
+        @media (max-width: 750px){
+            nav{
+                grid-template-columns: 1fr 0.5fr 0.5fr;
+            }
+            main p{
+                font-size: 80px;
+            }
+            main > span{
+                font-size: 20px;
+            }
         }
     </style>
 </head>
